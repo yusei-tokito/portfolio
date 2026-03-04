@@ -1,6 +1,13 @@
 'use client'
 
 export default function Footer() {
+
+  const links = [
+    { label: 'GitHub', href: 'https://github.com/yusei-tokito' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/yuseitokito/' },
+    { label: 'Email', href: 'mailto:yuseitokito.dev@gmail.com' }
+  ]
+
   return (
     <footer
       style={{
@@ -11,19 +18,45 @@ export default function Footer() {
     >
       <div
         className="max-w-6xl mx-auto px-6"
-        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', textAlign: 'center' }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '1rem',
+          textAlign: 'center'
+        }}
       >
-        <span style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.5rem', color: 'var(--ink)', fontWeight: 700 }}>
+
+        <span
+          style={{
+            fontFamily: 'var(--font-playfair)',
+            fontSize: '1.5rem',
+            color: 'var(--ink)',
+            fontWeight: 700
+          }}
+        >
           Y<span style={{ color: 'var(--gold)' }}>.</span>T
         </span>
-        <p style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.72rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--ink-light)' }}>
+
+        <p
+          style={{
+            fontFamily: 'var(--font-jetbrains)',
+            fontSize: '0.72rem',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            color: 'var(--ink-light)'
+          }}
+        >
           Charting new territories · {new Date().getFullYear()}
         </p>
+
         <div style={{ display: 'flex', gap: '1.5rem' }}>
-          {['GitHub', 'LinkedIn', 'Email'].map((label) => (
+          {links.map((link) => (
             <a
-              key={label}
-              href="#"
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 fontFamily: 'var(--font-jetbrains)',
                 fontSize: '0.72rem',
@@ -36,10 +69,11 @@ export default function Footer() {
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--ink)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gold)')}
             >
-              {label}
+              {link.label}
             </a>
           ))}
         </div>
+
       </div>
     </footer>
   )
